@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gamer's Paradise</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      text-align: center; /* Align navigation center */
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold; /* Add font weight */
+      transition: color 0.3s; /* Add transition for hover effect */
+    }
+
+    nav ul li a:hover {
+      color: #f1f1f1; /* Change color on hover */
+    }
+
+    main {
+      padding: 20px;
+      text-align: center; /* Align main content center */
+    }
+
+    .carousel-item img {
+      height: 400px; /* Adjust the height of the banners */
+      object-fit: cover; /* Maintain aspect ratio */
+    }
+
+    .carousel-caption {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      width: 80%;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Gamer's Paradise</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">Cart</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+        <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+      </ol>
+
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://cdn2.vectorstock.com/i/1000x1000/52/16/game-gadgets-web-banner-template-gamers-equipment-vector-39045216.jpg" alt="Banner 1" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="https://vertux.com/cdn/shop/files/Vertux-Ammolite-banner_1980x.jpg" alt="Banner 2" class="d-block w-100">
+          
+        </div>
+        <div class="carousel-item">
+          <img src="https://i.pinimg.com/originals/82/d1/a7/82d1a7de8b4ace8d0fb3309117cec204.jpg" alt="Banner 3" class="d-block w-100">
+        
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white text-center p-3">
+    &copy; 2023 Gamer's Paradise
+  </footer>
+</body>
+</html>

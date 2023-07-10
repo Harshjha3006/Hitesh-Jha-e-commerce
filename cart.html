@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopper's Paradise - Cart</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      text-align: center; /* Align navigation center */
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold; /* Add font weight */
+      transition: color 0.3s; /* Add transition for hover effect */
+    }
+
+    nav ul li a:hover {
+      color: #f1f1f1; /* Change color on hover */
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      margin-right: 10px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+
+    .cart-item-quantity {
+      font-weight: bold;
+    }
+
+    .cart-item-actions button {
+      margin-right: 5px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Sample cart items for testing
+    let cartItems = [
+      { id: 1, name: 'Stream Deck', image: 'https://images.immediate.co.uk/production/volatile/sites/4/2022/08/Elgato-Stream-Deck-MK.2-7676aa8.jpg', quantity: 0 },
+      { id: 2, name: 'Logitech gaming headphones', image: 'https://m.media-amazon.com/images/I/71kdXkr974L._SL1500_.jpg', quantity: 0 },
+      { id: 3, name: 'Logitech G502', image: 'https://m.media-amazon.com/images/I/51ZLPEu0SmS.jpg', quantity: 0 },
+      { id: 4, name: 'Product 4', image: 'https://images-cdn.ubuy.ae/63b808f53a6ce55461637023-logitech-g-pro-mechanical-gaming.jpg', quantity: 0 },
+      { id: 5, name: 'Product 5', image: 'https://www.pcstudio.in/wp-content/uploads/2020/05/Razer-Firefly-V2-1.jpg', quantity: 0 },
+      { id: 6, name: 'Product 6', image: 'https://www.techspot.com/articles-info/2444/images/2022-04-05-image-19.jpg', quantity: 0 },
+      { id: 7, name: 'Product 7', image: 'https://d10mhq06fikmnr.cloudfront.net/catalog/product/thumbnail/ecbf416432bc98756993590af22ca7aff5a2890f73cda956feeae446/image/298484/500x500/110/0/n/e/nero_rev2_main-min.jpg', quantity: 0 },
+      { id: 8, name: 'Product 8', image: 'https://static.toiimg.com/thumb/msid-89805250,width-1280,height-720,resizemode-4/.jpg', quantity: 0 },
+      { id: 9, name: 'Product 9', image: 'https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/graphics-cards/geforce-ada-4090-web-og-1200x630@2x.jpg', quantity: 0 },
+    ];
+
+    function renderCartItems() {
+      const cartItemsContainer = document.getElementById('cart-items');
+      cartItemsContainer.innerHTML = '';
+
+      cartItems.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        const itemImage = document.createElement('img');
+        itemImage.src = item.image;
+        itemImage.alt = item.name;
+
+        const itemDetails = document.createElement('div');
+        itemDetails.classList.add('cart-item-details');
+
+        const itemName = document.createElement('h4');
+        itemName.textContent = item.name;
+
+        const itemQuantity = document.createElement('p');
+        itemQuantity.classList.add('cart-item-quantity');
+        itemQuantity.textContent = `Quantity: ${item.quantity}`;
+
+        const itemActions = document.createElement('div');
+        itemActions.classList.add('cart-item-actions');
+
+        const decreaseButton = document.createElement('button');
+        decreaseButton.textContent = '-';
+        decreaseButton.addEventListener('click', () => decreaseQuantity(item));
+
+        const increaseButton = document.createElement('button');
+        increaseButton.textContent = '+';
+        increaseButton.addEventListener('click', () => increaseQuantity(item));
+
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => removeItem(item));
+
+        itemActions.appendChild(decreaseButton);
+        itemActions.appendChild(increaseButton);
+        itemActions.appendChild(removeButton);
+
+        itemDetails.appendChild(itemName);
+        itemDetails.appendChild(itemQuantity);
+        itemDetails.appendChild(itemActions);
+
+        cartItem.appendChild(itemImage);
+        cartItem.appendChild(itemDetails);
+
+        cartItemsContainer.appendChild(cartItem);
+      });
+    }
+
+    function decreaseQuantity(item) {
+      if (item.quantity > 1) {
+        item.quantity--;
+        renderCartItems();
+      }
+    }
+
+    function increaseQuantity(item) {
+      item.quantity++;
+      renderCartItems();
+    }
+
+    function removeItem(item) {
+      cartItems = cartItems.filter(i => i.id !== item.id);
+      renderCartItems();
+    }
+
+    // Document ready
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartItems();
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Gamer's Paradise</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">Cart</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Cart</h1>
+      <div id="cart-items"></div>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white text-center p-3">
+    &copy; 2023 Gamer's Paradise
+  </footer>
+</body>
+</html>
